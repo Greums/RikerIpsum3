@@ -4,7 +4,7 @@ Lorem Ipsum: The Next Generation
 Credits
 =======
 
-This module is a update from @ben174's [projet](http://ben174.github.io/rikeripsum/), adding support for Python 3.
+This module is a update from `Ben Friedland <https://github.com/ben174>`_'s `project <https://github.com/ben174/rikeripsum>`_, adding support for Python 3.
 
 Usage
 =====
