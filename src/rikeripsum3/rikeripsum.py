@@ -9,6 +9,7 @@ lines = None
 
 _ROOT = os.path.abspath(os.path.dirname(__file__))
 
+
 def get_data(path):
     return os.path.join(_ROOT, 'data', path)
 
@@ -42,8 +43,7 @@ def generate_sentence(word_count=None):
     if not word_count:
         return random.choice(lines)['text']
 
-    potential_matches = [line for line in lines if
-        line['word_count'] == word_count]
+    potential_matches = [line for line in lines if line['word_count'] == word_count]
     if potential_matches:
         return random.choice(potential_matches)['text']
     else:
@@ -69,15 +69,19 @@ class ImpossibleSentenceError(Exception):
     was requested which the engine did not have data to fulfill.
 
     """
-    def __init__(self, message, Errors):
+    def __init__(self, message):
         Exception.__init__(self, message)
 
 
 def main():
 
     parser = argparse.ArgumentParser(description='Print Riker quotes.')
-    parser.add_argument('-c', '--count', dest='count', type=int,
-                       help='minimum number of words in the sentence')
+    parser.add_argument(
+        '-c', '--count',
+        dest='count',
+        type=int,
+        help='minimum number of words in the sentence'
+    )
 
     args = parser.parse_args()
     print(generate_sentence(args.count))

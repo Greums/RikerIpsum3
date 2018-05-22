@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 import re
-import os, os.path
 import pickle
+from os import path, listdir
 
 character = 'RIKER'
-num_words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',]
+num_words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven']
 
-_ROOT = os.path.abspath(os.path.dirname(__file__))
+_ROOT = path.abspath(path.dirname(__file__))
 
 
 def get_data(path):
-    return os.path.join(_ROOT, 'data', path)
+    return path.join(_ROOT, 'data', path)
 
 
 def main():
     lines = []
     for season_num in range(1, 7):
         season_dir = 'scripts/season%s' % num_words[season_num]
-        for script_file in os.listdir(season_dir):
+        for script_file in listdir(season_dir):
             curr_lines = extract_riker_lines(season_num, script_file)
             lines.extend(curr_lines)
     lines.sort()
